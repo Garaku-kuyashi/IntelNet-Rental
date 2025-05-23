@@ -1,0 +1,28 @@
+tipe,data
+# Tipe: user
+# Format: username,password,nama,status,server
+user,admin,admin123,Admin Utama,active,-
+user,rudi,rudi12,Rudi Prasetyo,active,Terra0101
+user,andi,andi123,Andi Saputra,active,SuperCloud
+user,Doktah123,doktah1123,Theresa,active,Terra0101
+user,apa,ap12,apap,active,w
+user,w,w,w,active,w
+user,q,q,q,active,Terra0101
+
+# Tipe: server
+# Format: id,nama,kapasitas,pengguna_sekarang
+server,1,SupaDupa,5,0
+server,2,Terra0101,10,2
+server,3,SuperCloud,20,1
+
+# Tipe: history
+# Format: waktu - aksi
+history,2025-05-13 23:03:18 - Admin menyetujui pembuatan akun: api
+history,2025-05-18 19:30:54 - Doktah123Memesan akun dengan server yaitu:Terra0101
+history,2025-05-21 13:25:07 - apa Memesan akun dengan server yaitu:w
+history,2025-05-21 13:25:11 - w Memesan akun dengan server yaitu:w
+history,2025-05-22 19:34:42 - Admin menambahkan server: apa
+history,2025-05-22 21:40:56 - q Memesan akun dengan server yaitu:SupaDupa
+
+# Tipe: change_request
+# Format: username,nama,password,server,status
