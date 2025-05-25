@@ -1,4 +1,6 @@
 #include <iostream>
+#include <algorithm>
+#include <cctype>     
 #include <fstream>
 #include <string>
 #include <iomanip>
@@ -482,13 +484,43 @@ void lihat() {
     cin.get();
 }
 
+
+void cariServer(const string& keyword) {
+    if (keyword.empty()) {
+        cout << "Kata kunci kosong. Silakan masukkan huruf atau nama server.\n";
+        return;
+    }
+
+    string keywordLower = keyword;
+    transform(keywordLower.begin(), keywordLower.end(), keywordLower.begin(), ::tolower);
+
+    bool found = false;
+    cout << "\n=== HASIL PENCARIAN ===\n";
+    for (int i = 0; i < serverCount; ++i) {
+        string namaLower = servers[i].nama;
+        transform(namaLower.begin(), namaLower.end(), namaLower.begin(), ::tolower);
+
+        if (namaLower.find(keywordLower) != string::npos) {
+            cout << servers[i].nama << " (" 
+                 << servers[i].pengguna_sekarang << "/" 
+                 << servers[i].kapasitas << ")\n";
+            found = true;
+        }
+    }
+
+    if (!found) {
+        cout << "Tidak ada server ditemukan dengan kata kunci '" << keyword << "'.\n";
+    }
+}
+
 void pengguna_terbanyak() {
     system("cls");
 
     if (serverCount == 0) {
         cout << "Tidak ada server tersedia.\n";
-        cout << "tekan enter untuk kembali...";
+        cout << "tekan enter...";
         cin.get();
+        clearInputBuffer();
         return;
     }
 
@@ -500,19 +532,34 @@ void pengguna_terbanyak() {
         for (int j = i + 1; j < serverCount; ++j)
             if (temp[i].pengguna_sekarang < temp[j].pengguna_sekarang)
                 swap(temp[i], temp[j]);
+
     cout << "+----+--------------+------------+-----------------+" << endl;
     cout << "| ID | Nama Server  | Kapasitas  | Jumlah Pengguna |" << endl;
     cout << "+====+==============+============+=================+" << endl;
+
     for (int i = 0; i < serverCount; ++i) {
         cout << "| " << setw(2) << left << temp[i].id << " | ";
         cout << setw(12) << left << temp[i].nama.substr(0, 12) << " | ";
         cout << setw(9) << left << temp[i].kapasitas << " | ";
         cout << setw(16) << left << temp[i].pengguna_sekarang << " | " << endl;
     }
-    cout << "+----+--------------+------------+-----------------+" << endl;
 
-    cout << "\ntekan enter untuk kembali";
+    cout << "+----+--------------+------------+-----------------+\n\n";
+
+    cout << "Apakah ingin mencari server? (y/n): ";
+    string pilih;
+    getline(cin, pilih);
+
+    if (pilih == "y") {
+        string keyword;
+        cout << "Masukkan kata kunci pencarian: ";
+        getline(cin, keyword);
+        cariServer(keyword);
+    }
+
+    cout << "\ntekan enter untuk kembali...";
     cin.get();
+    clearInputBuffer();
 }
 
 void editServer(string name) { 
