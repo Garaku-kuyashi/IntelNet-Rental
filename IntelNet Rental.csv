@@ -8,11 +8,13 @@ user,Doktah123,doktah1123,Theresa,active,Terra0101
 user,apa,ap12,apap,active,w
 user,w,w,w,active,w
 user,q,q,q,active,Terra0101
+user,prise,pris1123,yelena,active,Terra0101
+user,pries,,,inactive,-
 
 # Tipe: server
 # Format: id,nama,kapasitas,pengguna_sekarang
 server,1,SupaDupa,5,0
-server,2,Terra0101,10,2
+server,2,Terra0101,10,3
 server,3,SuperCloud,20,1
 
 # Tipe: history
@@ -23,6 +25,8 @@ history,2025-05-21 13:25:07 - apa Memesan akun dengan server yaitu:w
 history,2025-05-21 13:25:11 - w Memesan akun dengan server yaitu:w
 history,2025-05-22 19:34:42 - Admin menambahkan server: apa
 history,2025-05-22 21:40:56 - q Memesan akun dengan server yaitu:SupaDupa
+history,2025-05-25 20:58:36 - prise Memesan akun dengan server yaitu:SupaDupa
+history,2025-05-25 21:04:43 - Admin menambahkan server: rd
 
 # Tipe: change_request
 # Format: username,nama,password,server,status

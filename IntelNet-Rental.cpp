@@ -213,7 +213,7 @@ void registerUser() {
     getline(cin, nama);
 
     users[userCount++] = {username, password, nama, "inactive", "-"};
-    cout << "Registrasi berhasil! Silakan ajukan server via Request Akun.\n";
+    cout << "Registrasi berhasil! Silakan ajukan server via Request Server.\n";
     saveData();
 }
 
@@ -453,7 +453,6 @@ void tambah() {
         s.kapasitas = kapasitas;
         s.pengguna_sekarang = 0;
         servers[serverCount++] = s;
-        addHistory("Admin menambahkan server: " + s.nama);
         cout << "Server berhasil ditambahkan.\n";
 
         saveData();
@@ -474,8 +473,8 @@ void lihat() {
     {
         cout << "| " << setw(2) << left << servers[i].id << " | ";
         cout << setw(12) << left << servers[i].nama.substr(0, 12) << " | ";
-        cout << setw(9) << left << servers[i].kapasitas << " | ";
-        cout << setw(16) << left << servers[i].pengguna_sekarang << " | \n";
+        cout << setw(10) << left << servers[i].kapasitas << " | ";
+        cout << setw(15) << left << servers[i].pengguna_sekarang << " | \n";
         
     }
     cout << "+----+--------------+------------+-----------------+ \n";
@@ -695,7 +694,7 @@ void hapuserver() {
 }
 
 void riwayat() {
-    cout << "\n=== RIWAYAT PENYEWAAN ===\n";
+    cout << "\n======================= RIWAYAT PENYEWAAN =======================\n";
     for (int i = 0; i < historyCount; ++i) {
         cout << histories[i].waktu << " - " << histories[i].aksi << endl;
     }
@@ -715,7 +714,7 @@ void requestAkun() {
         return;
     }
 
-    cout << "\n=== REQUEST AKUN ===\n";
+    cout << "\n=== Request Server ===\n";
     cout << "Daftar Server:\n";
     for (int i = 0; i < serverCount; ++i)
         cout << servers[i].nama << " (" << servers[i].pengguna_sekarang << "/" << servers[i].kapasitas << ")\n";
@@ -805,16 +804,18 @@ void cekStatusAkun() {
 
 void lihatServer() {
     system("cls");
-    cout << "+----+--------------+------------+" << endl;
-    cout << "| ID | Nama Server  | Kapasitas  |" << endl;
-    cout << "+----+--------------+------------+" << endl;
+    cout << "+----+--------------+------------+-----------------+" << endl;
+    cout << "| ID | Nama Server  | Kapasitas  | Jumlah Pengguna |" << endl;
+    cout << "+----+--------------+------------+-----------------+" << endl;
     for (int i = 0; i < serverCount; ++i)
     {
         cout << "| " << setw(2) << left << servers[i].id << " | ";
         cout << setw(12) << left << servers[i].nama.substr(0, 12) << " | ";
-        cout << setw(9) << left << servers[i].kapasitas << " | ";        
+        cout << setw(10) << left << servers[i].kapasitas << " | ";
+        cout << setw(15) << left << servers[i].pengguna_sekarang << " | \n";
+        
     }
-    cout << "+----+--------------+------------+ \n";
+    cout << "+----+--------------+------------+-----------------+ \n";
     cout << "" << endl;
     cout << "tekan enter untuk kembali";
     cin.get();
@@ -895,7 +896,7 @@ int main() {
                                 cout << "\n=== MANAJEMEN SERVER ===\n";
                                 cout << "1. Tambah Server\n";
                                 cout << "2. Lihat Daftar Server\n";
-                                cout << "3. Lihat Server Terbanyak Pengguna\n";
+                                cout << "3. Lihat Server Pengguna Terbanyak\n";
                                 cout << "4. Ubah Server\n";
                                 cout << "5. Hapus Server\n";
                                 cout << "6. Kembali\n";
@@ -938,7 +939,7 @@ int main() {
                             break;
                         } else if (adminpilih == 5) {
                             saveData();
-                            cout << "Terima kasih telah menggunakan sistem ini.\n";
+                            cout << "terima kasih sudah berkunjung.\n";
                             return 0;
                         } else {
                             cout << "Pilihan tidak valid.\n";
@@ -949,7 +950,7 @@ int main() {
                         system("cls");
                         cout << "\n=== MENU USER ===\n";
                         cout << "1. Lihat Server\n";
-                        cout << "2. Request Akun\n";
+                        cout << "2. Request Server\n";
                         cout << "3. Cek Status Akun\n";
                         cout << "4. Request Perubahan Akun\n";
                         cout << "5. Kembali ke menu login\n";
@@ -978,7 +979,7 @@ int main() {
                         }else if (userpilih == 6)
                         {
                             saveData();
-                            cout << "Terima kasih telah menggunakan sistem ini.\n";
+                            cout << "terima kasih sudah berkunjung.\n";
                             return 0;
                         }else
                         {
@@ -991,7 +992,7 @@ int main() {
             registerUser();
         } else if (pilih == 3) {
             saveData();
-            cout << "Terima kasih telah menggunakan sistem ini.\n";
+            cout << "terima kasih sudah berkunjung.\n";
             return 0;
         } else {
             cout << "Pilihan tidak valid.\n";
