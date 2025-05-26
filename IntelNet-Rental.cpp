@@ -240,8 +240,7 @@ void lihatrequest() {
             cout << "Username: " << changeRequests[i].username << endl;
             cout << "Server Pilihan: " << changeRequests[i].server << endl;
             cout << "------------------------\n";
-            found = true;
-            
+            found = true; 
         }
     }
     cout << "" << endl;
@@ -327,8 +326,7 @@ void lihatubah() {
             cout << "Nama Baru: " << (changeRequests[i].nama.empty() ? "-" : changeRequests[i].nama) << endl;
             cout << "Server Baru: " << (changeRequests[i].server.empty() ? "-" : changeRequests[i].server) << endl;
             cout << "------------------------\n";
-            found = true;
-            
+            found = true;   
         }
         cout << "" << endl;
         cout << "tekan enter untuk kembali";
@@ -474,8 +472,7 @@ void lihat() {
         cout << "| " << setw(2) << left << servers[i].id << " | ";
         cout << setw(12) << left << servers[i].nama.substr(0, 12) << " | ";
         cout << setw(10) << left << servers[i].kapasitas << " | ";
-        cout << setw(15) << left << servers[i].pengguna_sekarang << " | \n";
-        
+        cout << setw(15) << left << servers[i].pengguna_sekarang << " | \n"; 
     }
     cout << "+----+--------------+------------+-----------------+ \n";
     cout << "" << endl;
