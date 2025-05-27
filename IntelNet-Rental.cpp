@@ -462,7 +462,7 @@ void tambah() {
     } while (loop == "y");
 }
 
-void lihat() {
+void lihat() {;
     system("cls");
     cout << "+----+--------------+------------+-----------------+" << endl;
     cout << "| ID | Nama Server  | Kapasitas  | Jumlah Pengguna |" << endl;
