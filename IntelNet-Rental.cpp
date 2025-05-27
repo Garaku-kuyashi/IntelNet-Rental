@@ -170,6 +170,8 @@ void saveData() {
     file.close();
 }
 
+//=================================================fitur dasar========================================================
+
 bool login() {
     system("cls");
     string username, password;
@@ -217,15 +219,7 @@ void registerUser() {
     saveData();
 }
 
-// void logout() {
-//     system("cls");
-//     if (currentUser.username.empty()) {
-//         cout << "Tidak ada user yang login!\n";
-//         return;
-//     }
-//     currentUser = User();
-//     cout << "Logout berhasil!\n";
-// }
+
 
 //=================================================admin=====================================
 void lihatrequest() {
@@ -242,11 +236,12 @@ void lihatrequest() {
             cout << "------------------------\n";
             found = true; 
         }
+        cout << "" << endl;
+        cout << "tekan enter untuk kembali";
+        cin.get();
     }
-    cout << "" << endl;
-    cout << "tekan enter untuk kembali";
-    cin.get();
     if (!found) cout << "Tidak ada permintaan pembuatan akun.\n";
+    cin.get();
 }
 
 void setujuakun() {
@@ -421,15 +416,16 @@ void setujuubah() {
 void tambah() {
     system ("cls");
     string loop;
-
+    
     do {
         if (serverCount >= MAX_SERVERS) {
             cout << "Batas server maksimal tercapai.\n";
             break;
         }
-
+        
         Server s;
         s.id = to_string(serverCount + 1); 
+        system ("cls");
         cout << "Nama Server: ";
         getline(cin, s.nama);
         int kapasitas;
@@ -491,6 +487,7 @@ void cariServer(const string& keyword) {
     transform(keywordLower.begin(), keywordLower.end(), keywordLower.begin(), ::tolower);
 
     bool found = false;
+    system ("cls");
     cout << "\n=== HASIL PENCARIAN ===\n";
     for (int i = 0; i < serverCount; ++i) {
         string namaLower = servers[i].nama;
@@ -514,9 +511,9 @@ void pengguna_terbanyak() {
 
     if (serverCount == 0) {
         cout << "Tidak ada server tersedia.\n";
-        cout << "tekan enter...";
+        cout << "tekan enter untuk kembali";
         cin.get();
-        clearInputBuffer();
+        // clearInputBuffer();
         return;
     }
 
@@ -553,9 +550,9 @@ void pengguna_terbanyak() {
         cariServer(keyword);
     }
 
-    cout << "\ntekan enter untuk kembali...";
+    cout << "\ntekan enter untuk kembali";
     cin.get();
-    clearInputBuffer();
+    // clearInputBuffer();
 }
 
 void editServer(string name) { 
@@ -691,6 +688,7 @@ void hapuserver() {
 }
 
 void riwayat() {
+    system ("cls");
     cout << "\n======================= RIWAYAT PENYEWAAN =======================\n";
     for (int i = 0; i < historyCount; ++i) {
         cout << histories[i].waktu << " - " << histories[i].aksi << endl;
@@ -699,6 +697,8 @@ void riwayat() {
     cout << "tekan enter untuk kembali";
     cin.get();
 }
+
+
 
 //===================================================user===================================
 void requestAkun() {
